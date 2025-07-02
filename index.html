@@ -11,46 +11,52 @@
 <body class="bg-gray-100 font-sans">
     <div class="flex h-screen">
         <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="bg-slate-800 text-white w-64 fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out z-30">
-            <div class="p-6 flex flex-col items-center border-b border-slate-700">
-                <img class="w-24 h-24 rounded-full mb-3" src="https://i.pravatar.cc/150" alt="User Avatar">
-                <h2 class="text-xl font-semibold">Raihan Ahmed</h2>
-                <p class="text-sm text-slate-400">Admin</p>
+        <aside id="sidebar" class="bg-slate-800 text-white w-64 fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out z-30 flex flex-col">
+            <div class="p-6 border-b border-slate-700">
+                <h1 id="sidebar-title" class="text-2xl font-bold text-white text-center nav-text">Expense Tracker</h1>
             </div>
-            <nav class="mt-4">
-                <a href="Dashboard.html" class="flex items-center px-6 py-3 text-slate-100 bg-slate-900 border-l-4 border-orange-500">
-                    <i class="fas fa-tachometer-alt w-6 text-center"></i><span class="ml-4">Dashboard</span>
+            
+            <nav class="mt-4 flex-1">
+                <a href="index.html" class="flex items-center px-6 py-3 text-slate-100 bg-slate-900 border-l-4 border-orange-500 nav-link">
+                    <i class="fas fa-tachometer-alt w-8 text-center"></i><span class="ml-4 nav-text">Dashboard</span>
                 </a>
                 <div>
-                    <button id="submenu-toggle" class="w-full flex justify-between items-center px-6 py-3 text-slate-300 hover:bg-slate-700">
-                        <div class="flex items-center"><i class="fas fa-file-invoice-dollar w-6 text-center"></i><span class="ml-4">Transactions</span></div>
-                        <i id="submenu-arrow" class="fas fa-chevron-down transition-transform"></i>
+                    <button id="submenu-toggle" class="w-full flex justify-between items-center px-6 py-3 text-slate-300 hover:bg-slate-700 nav-link">
+                        <div class="flex items-center"><i class="fas fa-file-invoice-dollar w-8 text-center"></i><span class="ml-4 nav-text">Transactions</span></div>
+                        <i id="submenu-arrow" class="fas fa-chevron-down transition-transform nav-text"></i>
                     </button>
                     <div id="submenu" class="hidden bg-slate-700">
-                        <a href="AllTransactions.html" class="block px-6 py-2 text-slate-300 hover:bg-slate-600 pl-16">All Transactions</a>
-                        <a href="Income.html" class="block px-6 py-2 text-slate-300 hover:bg-slate-600 pl-16">Income</a>
-                        <a href="Expenses.html" class="block px-6 py-2 text-slate-300 hover:bg-slate-600 pl-16">Expenses</a>
+                        <a href="AllTransactions.html" class="block px-6 py-2 text-slate-300 hover:bg-slate-600 pl-16 nav-text">All Transactions</a>
+                        <a href="Income.html" class="block px-6 py-2 text-slate-300 hover:bg-slate-600 pl-16 nav-text">Income</a>
+                        <a href="Expenses.html" class="block px-6 py-2 text-slate-300 hover:bg-slate-600 pl-16 nav-text">Expenses</a>
                     </div>
                 </div>
-                <a href="Reports.html" class="flex items-center px-6 py-3 text-slate-300 hover:bg-slate-700">
-                    <i class="fas fa-chart-bar w-6 text-center"></i><span class="ml-4">Reports</span>
+                <a href="Reports.html" class="flex items-center px-6 py-3 text-slate-300 hover:bg-slate-700 nav-link">
+                    <i class="fas fa-chart-bar w-8 text-center"></i><span class="ml-4 nav-text">Reports</span>
                 </a>
-                <a href="Settings.html" class="flex items-center px-6 py-3 text-slate-300 hover:bg-slate-700">
-                    <i class="fas fa-cog w-6 text-center"></i><span class="ml-4">Settings</span>
+                <a href="Settings.html" class="flex items-center px-6 py-3 text-slate-300 hover:bg-slate-700 nav-link">
+                    <i class="fas fa-cog w-8 text-center"></i><span class="ml-4 nav-text">Settings</span>
                 </a>
             </nav>
         </aside>
 
         <!-- Main Content -->
         <div id="main-content" class="flex-1 flex flex-col transition-all duration-300 ease-in-out lg:ml-64">
-            <!-- Top Navbar (Common for all pages) -->
-            <header class="bg-white shadow-md p-4 flex justify-between items-center z-20">
-                <button id="sidebar-toggle" class="text-gray-700 lg:hidden"><i class="fas fa-bars fa-lg"></i></button>
-                <div class="relative hidden md:block"><i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i><input type="text" placeholder="Search..." class="bg-gray-100 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"></div>
-                <div class="flex items-center space-x-4">
+            <!-- Top Navbar -->
+            <header class="bg-white shadow-md p-4 flex items-center z-20">
+                <!-- Mobile Sidebar Toggle -->
+                <button id="mobile-sidebar-toggle" class="text-gray-700 lg:hidden"><i class="fas fa-bars fa-lg"></i></button>
+                
+                <!-- Desktop Sidebar Toggle -->
+                <button id="desktop-sidebar-toggle" class="hidden lg:block text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+
+                <!-- Right Icons -->
+                <div class="flex items-center space-x-4 ml-auto">
                     <div class="relative"><button id="message-toggle" class="bg-gray-100 text-gray-600 hover:text-blue-500 hover:bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center"><i class="fas fa-envelope fa-lg"></i></button><span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5">3</span><div id="message-modal" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-50"><div class="p-4 border-b"><h3 class="font-semibold text-gray-800">Messages</h3></div><div class="divide-y max-h-80 overflow-y-auto"><a href="#" class="flex items-start px-4 py-3 hover:bg-gray-50"><img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar"><div class="ml-3 w-full"><p class="text-sm font-semibold text-gray-700">Sadia Islam</p><p class="text-sm text-gray-600 truncate">Hey, are we still on for the meeting?</p><p class="text-xs text-gray-400 mt-1">5 minutes ago</p></div></a><a href="#" class="flex items-start px-4 py-3 hover:bg-gray-50"><img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/150?img=2" alt="User Avatar"><div class="ml-3 w-full"><p class="text-sm font-semibold text-gray-700">Arif Khan</p><p class="text-sm text-gray-600 truncate">I've sent the document.</p><p class="text-xs text-gray-400 mt-1">20 minutes ago</p></div></a></div></div></div>
                     <div class="relative"><button id="notification-toggle" class="bg-gray-100 text-gray-600 hover:text-blue-500 hover:bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center"><i class="fas fa-bell fa-lg"></i></button><span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5">5</span><div id="notification-modal" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 z-50"><div class="p-4 border-b"><h3 class="font-semibold text-gray-800">Notifications</h3></div><div class="divide-y max-h-80 overflow-y-auto"><a href="#" class="flex items-start px-4 py-3 hover:bg-gray-50"><div class="flex-shrink-0"><div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center"><i class="fas fa-check text-green-500"></i></div></div><div class="ml-3 w-full"><p class="text-sm text-gray-700">Your monthly report is ready to download.</p><p class="text-xs text-gray-400 mt-1">15 minutes ago</p></div></a><a href="#" class="flex items-start px-4 py-3 hover:bg-gray-50"><div class="flex-shrink-0"><div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center"><i class="fas fa-user-plus text-blue-500"></i></div></div><div class="ml-3 w-full"><p class="text-sm text-gray-700">A new user has registered.</p><p class="text-xs text-gray-400 mt-1">1 hour ago</p></div></a><a href="#" class="flex items-start px-4 py-3 hover:bg-gray-50"><div class="flex-shrink-0"><div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-500"></i></div></div><div class="ml-3 w-full"><p class="text-sm text-gray-700">Server space is running low!</p><p class="text-xs text-gray-400 mt-1">3 hours ago</p></div></a></div></div></div>
-                    <div class="relative"><button id="profile-toggle"><img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/150" alt="User Avatar"></button><div id="profile-modal" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-50"><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a><div class="border-t border-gray-100"></div><a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</a></div></div>
+                    <div class="relative"><button id="profile-toggle"><img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/150" alt="User Avatar"></button><div id="profile-modal" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-50"><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a><a href="Settings.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a><div class="border-t border-gray-100"></div><a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</a></div></div>
                 </div>
             </header>
 
@@ -73,15 +79,19 @@
         </div>
     </div>
     <script>
-        // Paste the same JavaScript from the original file here
-        // This script handles all the interactivity (sidebar, modals, charts)
         document.addEventListener('DOMContentLoaded', function () {
-            const toggleModal = (modal, otherModals) => { modal.classList.toggle('hidden'); otherModals.forEach(other => other.classList.add('hidden')); };
-            const sidebarToggle = document.getElementById('sidebar-toggle');
+            // --- STATE ---
+            let isSidebarPinned = true; // Sidebar is pinned by default
+
+            // --- ELEMENT SELECTORS ---
             const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+            const desktopSidebarToggle = document.getElementById('desktop-sidebar-toggle');
+            const navTexts = document.querySelectorAll('.nav-text');
+            const navLinks = document.querySelectorAll('.nav-link');
             const submenuToggle = document.getElementById('submenu-toggle');
             const submenu = document.getElementById('submenu');
-            const submenuArrow = document.getElementById('submenu-arrow');
             const messageToggle = document.getElementById('message-toggle');
             const messageModal = document.getElementById('message-modal');
             const notificationToggle = document.getElementById('notification-toggle');
@@ -89,20 +99,79 @@
             const profileToggle = document.getElementById('profile-toggle');
             const profileModal = document.getElementById('profile-modal');
             const allModals = [messageModal, notificationModal, profileModal];
-            sidebarToggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('-translate-x-full'); });
-            submenuToggle.addEventListener('click', () => { submenu.classList.toggle('hidden'); submenuArrow.classList.toggle('rotate-180'); });
+
+            // --- FUNCTIONS ---
+            const toggleModal = (modal, otherModals) => {
+                modal.classList.toggle('hidden');
+                otherModals.forEach(other => other.classList.add('hidden'));
+            };
+
+            const collapseSidebar = () => {
+                sidebar.classList.replace('w-64', 'w-20');
+                mainContent.classList.replace('lg:ml-64', 'lg:ml-20');
+                navTexts.forEach(text => text.classList.add('hidden'));
+                navLinks.forEach(link => link.classList.add('justify-center'));
+            };
+
+            const expandSidebar = () => {
+                sidebar.classList.replace('w-20', 'w-64');
+                mainContent.classList.replace('lg:ml-20', 'lg:ml-64');
+                navTexts.forEach(text => text.classList.remove('hidden'));
+                navLinks.forEach(link => link.classList.remove('justify-center'));
+            };
+            
+            // --- EVENT LISTENERS ---
+            mobileSidebarToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sidebar.classList.toggle('-translate-x-full');
+            });
+
+            desktopSidebarToggle.addEventListener('click', () => {
+                isSidebarPinned = !isSidebarPinned;
+                if (isSidebarPinned) {
+                    expandSidebar();
+                } else {
+                    collapseSidebar();
+                }
+            });
+
+            sidebar.addEventListener('mouseenter', () => {
+                if (!isSidebarPinned) {
+                    expandSidebar();
+                }
+            });
+
+            sidebar.addEventListener('mouseleave', () => {
+                if (!isSidebarPinned) {
+                    collapseSidebar();
+                }
+            });
+
+            submenuToggle.addEventListener('click', () => {
+                if (!isSidebarPinned && sidebar.classList.contains('w-20')) return;
+                submenu.classList.toggle('hidden');
+                document.getElementById('submenu-arrow').classList.toggle('rotate-180');
+            });
+
             messageToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleModal(messageModal, [notificationModal, profileModal]); });
             notificationToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleModal(notificationModal, [messageModal, profileModal]); });
             profileToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleModal(profileModal, [messageModal, notificationModal]); });
+
             document.addEventListener('click', (e) => {
-                if (window.innerWidth < 1024 && !sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) { sidebar.classList.add('-translate-x-full'); }
+                if (window.innerWidth < 1024 && !sidebar.contains(e.target) && !mobileSidebarToggle.contains(e.target)) {
+                    sidebar.classList.add('-translate-x-full');
+                }
                 allModals.forEach(modal => {
                     if (!modal.classList.contains('hidden')) {
                         const toggleButton = document.getElementById(modal.id.replace('-modal', '-toggle'));
-                        if (!toggleButton.contains(e.target) && !modal.contains(e.target)) { modal.classList.add('hidden'); }
+                        if (toggleButton && !toggleButton.contains(e.target) && !modal.contains(e.target)) {
+                            modal.classList.add('hidden');
+                        }
                     }
                 });
             });
+
+            // --- CHARTS ---
             const expensesBarCtx = document.getElementById('expensesBarChart').getContext('2d');
             new Chart(expensesBarCtx, { type: 'bar', data: { labels: ['Food', 'Transport', 'Bills', 'Shopping', 'Other'], datasets: [{ label: 'Expenses', data: [6500, 4200, 3100, 5300, 2400], backgroundColor: ['rgba(255, 99, 132, 0.5)','rgba(54, 162, 235, 0.5)','rgba(255, 206, 86, 0.5)','rgba(75, 192, 192, 0.5)','rgba(153, 102, 255, 0.5)'], borderColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)'], borderWidth: 1 }] }, options: { responsive: true, scales: { y: { beginAtZero: true } } } });
             const incomeExpenseLineCtx = document.getElementById('incomeExpenseLineChart').getContext('2d');
